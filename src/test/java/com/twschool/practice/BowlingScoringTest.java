@@ -6,7 +6,7 @@ import org.junit.Test;
 public class BowlingScoringTest {
 
     @Test
-    public void should_return_the_sum_of_hit_bottle_when_ten_frame_does_not_hit_all() {
+    public void should_return_the_sum_of_hit_bottle_when_ten_frame_does_not_hit_all_and_with_missed() {
         
         BowlingScoring bowlingScoring = new BowlingScoring();
 
@@ -14,4 +14,5 @@ public class BowlingScoringTest {
 
         Assert.assertEquals(90, score);
     }
+
 }

@@ -22,9 +22,8 @@ public class BowlingScoring {
     }
 
     public int getSumScores() {
-        List<Ball> allBalls = getAllBalls();
-
         int score = 0;
+        List<Ball> allBalls = getAllBalls();
         for (int ballIndex = 0; ballIndex < getTenFrameBalls().size(); ballIndex++) {
             score += allBalls.get(ballIndex).getHitBattles();
             if (allBalls.get(ballIndex) instanceof StrikeBall) {

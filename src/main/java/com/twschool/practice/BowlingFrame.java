@@ -38,4 +38,13 @@ public class BowlingFrame {
     public void setStrike(boolean strike) {
         this.strike = strike;
     }
+
+    public int getFirstHitBottles() {
+        return firstHitBottles;
+    }
+
+    public int getSecondHitBottles() {
+        return secondHitBottles;
+    }
+
 }

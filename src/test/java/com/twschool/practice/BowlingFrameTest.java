@@ -11,6 +11,8 @@ public class BowlingFrameTest {
 
         Assert.assertNotNull(bowlingFrame);
         Assert.assertEquals(9, bowlingFrame.getFrameHitBottles());
+        Assert.assertEquals(9, bowlingFrame.getFirstHitBottles());
+        Assert.assertEquals(0, bowlingFrame.getSecondHitBottles());
     }
 
     @Test
@@ -19,6 +21,8 @@ public class BowlingFrameTest {
 
         Assert.assertNotNull(bowlingFrame);
         Assert.assertEquals(9, bowlingFrame.getFrameHitBottles());
+        Assert.assertEquals(8, bowlingFrame.getFirstHitBottles());
+        Assert.assertEquals(1, bowlingFrame.getSecondHitBottles());
     }
 
     @Test
@@ -28,6 +32,9 @@ public class BowlingFrameTest {
         Assert.assertNotNull(bowlingFrame);
         Assert.assertEquals(10, bowlingFrame.getFrameHitBottles());
         Assert.assertTrue(bowlingFrame.isSpare());
+        Assert.assertEquals(5, bowlingFrame.getFirstHitBottles());
+        Assert.assertEquals(5, bowlingFrame.getSecondHitBottles());
+
     }
 
     @Test
@@ -37,6 +44,9 @@ public class BowlingFrameTest {
         Assert.assertNotNull(bowlingFrame);
         Assert.assertEquals(10, bowlingFrame.getFrameHitBottles());
         Assert.assertTrue(bowlingFrame.isStrike());
-    }
+        Assert.assertEquals(10, bowlingFrame.getFirstHitBottles());
+        Assert.assertEquals(0, bowlingFrame.getSecondHitBottles());
 
+    }
+    
 }

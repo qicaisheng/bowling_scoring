@@ -10,19 +10,16 @@ public class BowlingFrame {
         String[] frameScoreArray = frameScoreString.split("");
         if (frameScoreArray[0].equals("X")) {
             firstHitBottles = 10;
-            secondHitBottles = 0;
             strike = true;
         } else {
             firstHitBottles = Integer.parseInt(frameScoreArray[0]);
-            if (frameScoreArray[1].equals("-"))  {
-                secondHitBottles = 0;
-            } else if (frameScoreArray[1].equals("/")) {
+            if (frameScoreArray[1].equals("/")) {
                 secondHitBottles = 10 - firstHitBottles;
                 spare = true;
-            } else {
+            }
+            if (frameScoreArray[1].matches("\\d")) {
                 secondHitBottles = Integer.parseInt(frameScoreArray[1]);
             }
-            
         }
     }
 

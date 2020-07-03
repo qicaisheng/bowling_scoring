@@ -20,4 +20,14 @@ public class BowlingFrameTest {
         Assert.assertNotNull(bowlingFrame);
         Assert.assertEquals(9, bowlingFrame.getFrameHitBottles());
     }
+
+    @Test
+    public void should_parse_bowling_frame_give_frame_score_5_and_spare() {
+        BowlingFrame bowlingFrame = new BowlingFrame("5/");
+
+        Assert.assertNotNull(bowlingFrame);
+        Assert.assertEquals(10, bowlingFrame.getFrameHitBottles());
+        Assert.assertTrue(bowlingFrame.isSpare());
+    }
+
 }

@@ -6,9 +6,21 @@ public class BonusBalls {
 
     public BonusBalls(String bonusScoreString) {
         String[] extraScoreStringArray = bonusScoreString.split("");
-        firstHitBottles = Integer.parseInt(extraScoreStringArray[0]);
+        String firstTryScoreString = extraScoreStringArray[0];
+        firstHitBottles = firstTryScoreString.equals("X") ? 10 : Integer.parseInt(firstTryScoreString);
         boolean withExtraTwoTry = extraScoreStringArray.length == 2;
-        secondHitBottles = withExtraTwoTry ? Integer.parseInt(extraScoreStringArray[1]) : 0;
+        if (withExtraTwoTry) {
+            String secondTryScoreString = extraScoreStringArray[1];
+            if (secondTryScoreString.equals("X")) {
+                secondHitBottles = 10;
+            }
+            if (secondTryScoreString.equals("/")) {
+                secondHitBottles = 10 - firstHitBottles;
+            }
+            if (secondTryScoreString.matches("\\d")) {
+                secondHitBottles = Integer.parseInt(secondTryScoreString);
+            }
+        }
 
     }
 
@@ -16,15 +28,8 @@ public class BonusBalls {
         return firstHitBottles;
     }
 
-    public void setFirstHitBottles(int firstHitBottles) {
-        this.firstHitBottles = firstHitBottles;
-    }
-
     public int getSecondHitBottles() {
         return secondHitBottles;
     }
 
-    public void setSecondHitBottles(int secondHitBottles) {
-        this.secondHitBottles = secondHitBottles;
-    }
 }

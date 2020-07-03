@@ -8,12 +8,16 @@ public class BowlingScoring {
     
     private List<BowlingFrame> bowlingFrames;
     private int extraFirstTryHitBottles;
+    private int extraSecondTryHitBottles;
 
     public BowlingScoring(String scoreString) {
         String[] bowlingScoresArray = scoreString.split("\\|\\|");
         List<String> frameScores = Arrays.asList(bowlingScoresArray[0].split("\\|"));
         if (bowlingScoresArray.length == 2) {
-            extraFirstTryHitBottles = Integer.parseInt(bowlingScoresArray[1]);
+            String extraScoreString = bowlingScoresArray[1];
+            String[] extraScoreStringArray = extraScoreString.split("");
+            extraFirstTryHitBottles = Integer.parseInt(extraScoreStringArray[0]);
+            extraSecondTryHitBottles = extraScoreStringArray.length == 2 ? Integer.parseInt(extraScoreStringArray[1]) : 0;
         }
         bowlingFrames = frameScores.stream().map(BowlingFrame::new).collect(Collectors.toList());
     }
@@ -32,5 +36,13 @@ public class BowlingScoring {
 
     public void setExtraFirstTryHitBottles(int extraFirstTryHitBottles) {
         this.extraFirstTryHitBottles = extraFirstTryHitBottles;
+    }
+
+    public int getExtraSecondTryHitBottles() {
+        return extraSecondTryHitBottles;
+    }
+
+    public void setExtraSecondTryHitBottles(int extraSecondTryHitBottles) {
+        this.extraSecondTryHitBottles = extraSecondTryHitBottles;
     }
 }

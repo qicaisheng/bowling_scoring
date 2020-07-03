@@ -34,4 +34,14 @@ public class BowlingScoringTest {
         Assert.assertEquals(5, bowlingScoring.getExtraFirstTryHitBottles());
     }
 
+    @Test
+    public void should_parse_frames_and_extra_hit_bottles_given_last_try_strike_and_two_extra_try() {
+
+        BowlingScoring bowlingScoring = new BowlingScoring("5/|5/|5/|5/|5/|5/|5/|5/|5/|X||51");
+
+        Assert.assertEquals(10, bowlingScoring.getBowlingFrames().size());
+        Assert.assertEquals(5, bowlingScoring.getExtraFirstTryHitBottles());
+        Assert.assertEquals(1, bowlingScoring.getExtraSecondTryHitBottles());
+    }
+
 }

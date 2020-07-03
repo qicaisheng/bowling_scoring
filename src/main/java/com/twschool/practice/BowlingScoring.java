@@ -22,11 +22,8 @@ public class BowlingScoring {
     }
 
     public int getSumScores() {
-        List<Ball> balls = bowlingFrames.stream().map(BowlingFrame::getBalls).flatMap(Collection::stream).collect(Collectors.toList());
-        List<Ball> allBalls = new ArrayList<>(balls);
-        if (bonusBalls != null) {
-            allBalls.addAll(bonusBalls.getBalls());
-        }
+        List<Ball> balls = getTenFrameBalls();
+        List<Ball> allBalls = getAllBalls();
 
         int score = 0;
         for (int ballIndex = 0; ballIndex < balls.size(); ballIndex++) {
@@ -39,6 +36,18 @@ public class BowlingScoring {
             }
         }
         return score;
+    }
+
+    private List<Ball> getAllBalls() {
+        List<Ball> allBalls = new ArrayList<>(getTenFrameBalls());
+        if (bonusBalls != null) {
+            allBalls.addAll(bonusBalls.getBalls());
+        }
+        return allBalls;
+    }
+
+    private List<Ball> getTenFrameBalls() {
+        return bowlingFrames.stream().map(BowlingFrame::getBalls).flatMap(Collection::stream).collect(Collectors.toList());
     }
 
     public List<BowlingFrame> getBowlingFrames() {

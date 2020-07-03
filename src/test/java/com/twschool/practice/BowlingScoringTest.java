@@ -46,4 +46,15 @@ public class BowlingScoringTest {
         Assert.assertEquals(1, bowlingScoring.getBonusBalls().getSecondHitBottles());
     }
 
+    @Test
+    public void should_return_sum_of_hit_bottles_and_bonus_ball_score_given_all_spare_and_extra_try() {
+
+        BowlingScoring bowlingScoring = new BowlingScoring("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5");
+        
+        int score = bowlingScoring.getSumScores();
+
+        Assert.assertEquals(150, score);
+    }
+
+
 }

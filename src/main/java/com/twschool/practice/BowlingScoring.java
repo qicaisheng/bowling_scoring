@@ -20,7 +20,18 @@ public class BowlingScoring {
     }
 
     public int getSumScores() {
-        return bowlingFrames.stream().mapToInt(BowlingFrame::getFrameHitBottles).sum();
+        int score = 0;
+        for (int frameIndex = 0; frameIndex < bowlingFrames.size() - 1; frameIndex++) {
+            score += bowlingFrames.get(frameIndex).getFrameHitBottles();
+            if (bowlingFrames.get(frameIndex).isSpare()) {
+                score += bowlingFrames.get(frameIndex + 1).getFirstHitBottles();
+            }
+        }
+        score += bowlingFrames.get(9).getFrameHitBottles();
+        if (bowlingFrames.get(9).isSpare()) {
+            score += bonusBalls.getFirstHitBottles();
+        }
+        return score;
     }
 
     public List<BowlingFrame> getBowlingFrames() {

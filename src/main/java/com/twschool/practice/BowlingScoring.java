@@ -22,11 +22,10 @@ public class BowlingScoring {
     }
 
     public int getSumScores() {
-        List<Ball> balls = getTenFrameBalls();
         List<Ball> allBalls = getAllBalls();
 
         int score = 0;
-        for (int ballIndex = 0; ballIndex < balls.size(); ballIndex++) {
+        for (int ballIndex = 0; ballIndex < getTenFrameBalls().size(); ballIndex++) {
             score += allBalls.get(ballIndex).getHitBattles();
             if (allBalls.get(ballIndex) instanceof StrikeBall) {
                 score += allBalls.get(ballIndex + 1).getHitBattles() + allBalls.get(ballIndex + 2).getHitBattles();

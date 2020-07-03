@@ -1,6 +1,8 @@
 package com.twschool.practice;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,44 +22,22 @@ public class BowlingScoring {
     }
 
     public int getSumScores() {
+        List<Ball> balls = bowlingFrames.stream().map(BowlingFrame::getBalls).flatMap(Collection::stream).collect(Collectors.toList());
+        List<Ball> allBalls = new ArrayList<>(balls);
+        if (bonusBalls != null) {
+            allBalls.addAll(bonusBalls.getBalls());
+        }
+
         int score = 0;
-        for (int frameIndex = 0; frameIndex < bowlingFrames.size() - 2; frameIndex++) {
-            score += bowlingFrames.get(frameIndex).getFrameHitBottles();
-            if (bowlingFrames.get(frameIndex).isSpare()) {
-                score += bowlingFrames.get(frameIndex + 1).getFirstHitBottles();
+        for (int ballIndex = 0; ballIndex < balls.size(); ballIndex++) {
+            score += allBalls.get(ballIndex).getHitBattles();
+            if (allBalls.get(ballIndex) instanceof StrikeBall) {
+                score += allBalls.get(ballIndex + 1).getHitBattles() + allBalls.get(ballIndex + 2).getHitBattles();
             }
-            if (bowlingFrames.get(frameIndex).isStrike()) {
-                score += bowlingFrames.get(frameIndex + 1).getFirstHitBottles();
-                if (bowlingFrames.get(frameIndex + 1).isStrike()) {
-                    score += bowlingFrames.get(frameIndex + 2).getFirstHitBottles();
-                } else {
-                    score += bowlingFrames.get(frameIndex + 1).getSecondHitBottles();
-                }
+            if (allBalls.get(ballIndex) instanceof SpareBall) {
+                score += allBalls.get(ballIndex + 1).getHitBattles();
             }
         }
-        score += bowlingFrames.get(8).getFrameHitBottles();
-        if (bowlingFrames.get(8).isSpare()) {
-            score += bowlingFrames.get(9).getFirstHitBottles();
-        }
-        if (bowlingFrames.get(8).isStrike()) {
-            score += bowlingFrames.get(9).getFirstHitBottles();
-            if (bowlingFrames.get(9).isStrike()) {
-                score += bonusBalls.getFirstHitBottles();
-            } else {
-                score += bowlingFrames.get(9).getSecondHitBottles();
-            }
-        }
-        
-        
-        score += bowlingFrames.get(9).getFrameHitBottles();
-        if (bowlingFrames.get(9).isSpare()) {
-            score += bonusBalls.getFirstHitBottles();
-        }
-        if (bowlingFrames.get(9).isStrike()) {
-            score += bonusBalls.getFirstHitBottles();
-            score += bonusBalls.getSecondHitBottles();
-        }
-        
         return score;
     }
 

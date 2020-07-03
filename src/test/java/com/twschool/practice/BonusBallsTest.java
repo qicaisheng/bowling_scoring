@@ -30,4 +30,13 @@ public class BonusBallsTest {
         Assert.assertEquals(10, bonusBalls.getFirstHitBottles());
         Assert.assertEquals(10, bonusBalls.getSecondHitBottles());
     }
+
+    @Test
+    public void should_parse_bonus_balls_given_two_bonus_ball_with_8_and_spare() {
+        BonusBalls bonusBalls = new BonusBalls("8/");
+
+        Assert.assertNotNull(bonusBalls);
+        Assert.assertEquals(8, bonusBalls.getFirstHitBottles());
+        Assert.assertEquals(2, bonusBalls.getSecondHitBottles());
+    }
 }

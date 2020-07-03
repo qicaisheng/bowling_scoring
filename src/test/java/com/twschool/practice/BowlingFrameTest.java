@@ -40,7 +40,6 @@ public class BowlingFrameTest {
 
         Assert.assertNotNull(bowlingFrame);
         Assert.assertEquals(10, bowlingFrame.getFrameHitBottles());
-        Assert.assertTrue(bowlingFrame.isSpare());
         Assert.assertEquals(5, bowlingFrame.getFirstHitBottles());
         Assert.assertEquals(5, bowlingFrame.getSecondHitBottles());
 
@@ -55,7 +54,6 @@ public class BowlingFrameTest {
 
         Assert.assertNotNull(bowlingFrame);
         Assert.assertEquals(10, bowlingFrame.getFrameHitBottles());
-        Assert.assertTrue(bowlingFrame.isStrike());
         Assert.assertEquals(10, bowlingFrame.getFirstHitBottles());
         Assert.assertEquals(0, bowlingFrame.getSecondHitBottles());
 

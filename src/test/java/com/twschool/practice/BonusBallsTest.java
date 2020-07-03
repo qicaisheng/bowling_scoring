@@ -10,8 +10,6 @@ public class BonusBallsTest {
         BonusBalls bonusBalls = new BonusBalls("5");
 
         Assert.assertNotNull(bonusBalls);
-        Assert.assertEquals(5, bonusBalls.getFirstHitBottles());
-        
         Assert.assertEquals(1, bonusBalls.getBalls().size());
         Assert.assertEquals(5, bonusBalls.getBalls().get(0).getHitBattles());
     }
@@ -21,9 +19,6 @@ public class BonusBallsTest {
         BonusBalls bonusBalls = new BonusBalls("51");
 
         Assert.assertNotNull(bonusBalls);
-        Assert.assertEquals(5, bonusBalls.getFirstHitBottles());
-        Assert.assertEquals(1, bonusBalls.getSecondHitBottles());
-
         Assert.assertEquals(2, bonusBalls.getBalls().size());
         Assert.assertEquals(5, bonusBalls.getBalls().get(0).getHitBattles());
         Assert.assertEquals(1, bonusBalls.getBalls().get(1).getHitBattles());
@@ -34,9 +29,6 @@ public class BonusBallsTest {
         BonusBalls bonusBalls = new BonusBalls("XX");
 
         Assert.assertNotNull(bonusBalls);
-        Assert.assertEquals(10, bonusBalls.getFirstHitBottles());
-        Assert.assertEquals(10, bonusBalls.getSecondHitBottles());
-
         Assert.assertEquals(2, bonusBalls.getBalls().size());
         Assert.assertEquals(10, bonusBalls.getBalls().get(0).getHitBattles());
         Assert.assertEquals(10, bonusBalls.getBalls().get(1).getHitBattles());
@@ -47,9 +39,6 @@ public class BonusBallsTest {
         BonusBalls bonusBalls = new BonusBalls("-X");
 
         Assert.assertNotNull(bonusBalls);
-        Assert.assertEquals(0, bonusBalls.getFirstHitBottles());
-        Assert.assertEquals(10, bonusBalls.getSecondHitBottles());
-
         Assert.assertEquals(2, bonusBalls.getBalls().size());
         Assert.assertEquals(0, bonusBalls.getBalls().get(0).getHitBattles());
         Assert.assertEquals(10, bonusBalls.getBalls().get(1).getHitBattles());
@@ -60,9 +49,6 @@ public class BonusBallsTest {
         BonusBalls bonusBalls = new BonusBalls("8/");
 
         Assert.assertNotNull(bonusBalls);
-        Assert.assertEquals(8, bonusBalls.getFirstHitBottles());
-        Assert.assertEquals(2, bonusBalls.getSecondHitBottles());
-
         Assert.assertEquals(2, bonusBalls.getBalls().size());
         Assert.assertEquals(8, bonusBalls.getBalls().get(0).getHitBattles());
         Assert.assertEquals(2, bonusBalls.getBalls().get(1).getHitBattles());

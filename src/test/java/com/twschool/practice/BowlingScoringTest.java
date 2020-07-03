@@ -32,7 +32,6 @@ public class BowlingScoringTest {
         
         Assert.assertEquals(10, bowlingScoring.getBowlingFrames().size());
         Assert.assertNotNull(bowlingScoring.getBonusBalls());
-        Assert.assertEquals(5, bowlingScoring.getBonusBalls().getFirstHitBottles());
     }
 
     @Test
@@ -42,8 +41,6 @@ public class BowlingScoringTest {
 
         Assert.assertEquals(10, bowlingScoring.getBowlingFrames().size());
         Assert.assertNotNull(bowlingScoring.getBonusBalls());
-        Assert.assertEquals(5, bowlingScoring.getBonusBalls().getFirstHitBottles());
-        Assert.assertEquals(1, bowlingScoring.getBonusBalls().getSecondHitBottles());
     }
 
     @Test

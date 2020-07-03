@@ -12,4 +12,13 @@ public class BonusBallsTest {
         Assert.assertNotNull(bonusBalls);
         Assert.assertEquals(5, bonusBalls.getFirstHitBottles());
     }
+
+    @Test
+    public void should_parse_bonus_balls_given_two_bonus_ball_with_5_and_1_hit_bottles() {
+        BonusBalls bonusBalls = new BonusBalls("51");
+
+        Assert.assertNotNull(bonusBalls);
+        Assert.assertEquals(5, bonusBalls.getFirstHitBottles());
+        Assert.assertEquals(1, bonusBalls.getSecondHitBottles());
+    }
 }

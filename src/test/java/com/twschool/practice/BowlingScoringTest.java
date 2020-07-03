@@ -73,5 +73,13 @@ public class BowlingScoringTest {
         Assert.assertEquals(300, score);
     }
 
+    @Test
+    public void should_return_sum_of_hit_bottles_and_bonus_ball_score_given_strike_spare_and_missed_case() {
 
+        BowlingScoring bowlingScoring = new BowlingScoring("X|7/|9-|X|-8|8/|-6|X|X|X||81");
+
+        int score = bowlingScoring.getSumScores();
+
+        Assert.assertEquals(167, score);
+    }
 }

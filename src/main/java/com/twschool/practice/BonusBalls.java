@@ -11,7 +11,17 @@ public class BonusBalls {
     public BonusBalls(String bonusScoreString) {
         String[] extraScoreStringArray = bonusScoreString.split("");
         String firstTryScoreString = extraScoreStringArray[0];
-        firstHitBottles = firstTryScoreString.equals("X") ? 10 : Integer.parseInt(firstTryScoreString);
+        
+        if (firstTryScoreString.equals("X")) {
+            firstHitBottles = 10;
+        }
+        if (firstTryScoreString.equals("-")) {
+            firstHitBottles = 0;
+        }
+        if (firstTryScoreString.matches("\\d")) {
+            firstHitBottles = Integer.parseInt(firstTryScoreString);
+        }
+        
         balls.add(new NormalBall(firstHitBottles));
         boolean withExtraTwoTry = extraScoreStringArray.length == 2;
         if (withExtraTwoTry) {

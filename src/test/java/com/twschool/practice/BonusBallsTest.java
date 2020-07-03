@@ -43,6 +43,19 @@ public class BonusBallsTest {
     }
 
     @Test
+    public void should_parse_bonus_balls_given_two_bonus_ball_with_missed_and_10_hit_bottles() {
+        BonusBalls bonusBalls = new BonusBalls("-X");
+
+        Assert.assertNotNull(bonusBalls);
+        Assert.assertEquals(0, bonusBalls.getFirstHitBottles());
+        Assert.assertEquals(10, bonusBalls.getSecondHitBottles());
+
+        Assert.assertEquals(2, bonusBalls.getBalls().size());
+        Assert.assertEquals(0, bonusBalls.getBalls().get(0).getHitBattles());
+        Assert.assertEquals(10, bonusBalls.getBalls().get(1).getHitBattles());
+    }
+
+    @Test
     public void should_parse_bonus_balls_given_two_bonus_ball_with_8_and_spare() {
         BonusBalls bonusBalls = new BonusBalls("8/");
 

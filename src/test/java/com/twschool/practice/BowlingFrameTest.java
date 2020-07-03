@@ -10,9 +10,6 @@ public class BowlingFrameTest {
         BowlingFrame bowlingFrame = new BowlingFrame("9-");
 
         Assert.assertNotNull(bowlingFrame);
-        Assert.assertEquals(9, bowlingFrame.getFrameHitBottles());
-        Assert.assertEquals(9, bowlingFrame.getFirstHitBottles());
-        Assert.assertEquals(0, bowlingFrame.getSecondHitBottles());
 
         Assert.assertEquals(2, bowlingFrame.getBalls().size());
         Assert.assertEquals(9, bowlingFrame.getBalls().get(0).getHitBattles());
@@ -24,9 +21,6 @@ public class BowlingFrameTest {
         BowlingFrame bowlingFrame = new BowlingFrame("81");
 
         Assert.assertNotNull(bowlingFrame);
-        Assert.assertEquals(9, bowlingFrame.getFrameHitBottles());
-        Assert.assertEquals(8, bowlingFrame.getFirstHitBottles());
-        Assert.assertEquals(1, bowlingFrame.getSecondHitBottles());
 
         Assert.assertEquals(2, bowlingFrame.getBalls().size());
         Assert.assertEquals(8, bowlingFrame.getBalls().get(0).getHitBattles());
@@ -39,9 +33,6 @@ public class BowlingFrameTest {
         BowlingFrame bowlingFrame = new BowlingFrame("5/");
 
         Assert.assertNotNull(bowlingFrame);
-        Assert.assertEquals(10, bowlingFrame.getFrameHitBottles());
-        Assert.assertEquals(5, bowlingFrame.getFirstHitBottles());
-        Assert.assertEquals(5, bowlingFrame.getSecondHitBottles());
 
         Assert.assertEquals(2, bowlingFrame.getBalls().size());
         Assert.assertEquals(5, bowlingFrame.getBalls().get(0).getHitBattles());
@@ -53,9 +44,6 @@ public class BowlingFrameTest {
         BowlingFrame bowlingFrame = new BowlingFrame("X");
 
         Assert.assertNotNull(bowlingFrame);
-        Assert.assertEquals(10, bowlingFrame.getFrameHitBottles());
-        Assert.assertEquals(10, bowlingFrame.getFirstHitBottles());
-        Assert.assertEquals(0, bowlingFrame.getSecondHitBottles());
 
         Assert.assertEquals(1, bowlingFrame.getBalls().size());
         Assert.assertEquals(10, bowlingFrame.getBalls().get(0).getHitBattles());

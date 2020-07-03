@@ -4,18 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BowlingFrame {
-    private int firstHitBottles;
-    private int secondHitBottles;
     private List<Ball> balls = new ArrayList<>();
 
     public BowlingFrame(String frameScoreString) {
         String[] frameScoreArray = frameScoreString.split("");
         if (frameScoreArray[0].equals("X")) {
-            firstHitBottles = 10;
             balls.add(new StrikeBall());
         } else {
-            firstHitBottles = Integer.parseInt(frameScoreArray[0]);
+            int firstHitBottles = Integer.parseInt(frameScoreArray[0]);
             balls.add(new NormalBall(firstHitBottles));
+            int secondHitBottles;
             if (frameScoreArray[1].equals("/")) {
                 secondHitBottles = 10 - firstHitBottles;
                 balls.add(new SpareBall(secondHitBottles));
@@ -28,18 +26,6 @@ public class BowlingFrame {
                 balls.add(new NormalBall(0));
             }
         }
-    }
-
-    public int getFrameHitBottles() {
-        return firstHitBottles + secondHitBottles;
-    }
-    
-    public int getFirstHitBottles() {
-        return firstHitBottles;
-    }
-
-    public int getSecondHitBottles() {
-        return secondHitBottles;
     }
 
     public List<Ball> getBalls() {

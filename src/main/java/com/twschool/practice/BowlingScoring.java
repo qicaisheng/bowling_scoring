@@ -2,12 +2,19 @@ package com.twschool.practice;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BowlingScoring {
-    public int calculate(String scoreString) {
+    
+    private List<BowlingFrame> bowlingFrames;
+
+    public BowlingScoring(String scoreString) {
         List<String> frameScores = Arrays.asList(scoreString.split("\\|"));
-        
-        return frameScores.stream().mapToInt(frameScoreString -> new BowlingFrame(frameScoreString).getFrameHitBottles()).sum();
+        bowlingFrames = frameScores.stream().map(BowlingFrame::new).collect(Collectors.toList());
+    }
+
+    public int getSumScores() {
+        return bowlingFrames.stream().mapToInt(BowlingFrame::getFrameHitBottles).sum();
     }
 
 }

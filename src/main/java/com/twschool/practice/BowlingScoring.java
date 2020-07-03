@@ -31,6 +31,11 @@ public class BowlingScoring {
         if (bowlingFrames.get(9).isSpare()) {
             score += bonusBalls.getFirstHitBottles();
         }
+        if (bowlingFrames.get(9).isStrike()) {
+            score += bonusBalls.getFirstHitBottles();
+            score += bonusBalls.getSecondHitBottles();
+        }
+        
         return score;
     }
 

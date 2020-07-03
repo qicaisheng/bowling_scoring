@@ -31,7 +31,7 @@ public class BowlingScoringTest {
         BowlingScoring bowlingScoring = new BowlingScoring("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5");
         
         Assert.assertEquals(10, bowlingScoring.getBowlingFrames().size());
-        Assert.assertNotNull(bowlingScoring.getBonusBalls());
+        Assert.assertNotNull(bowlingScoring.getBonusFrame());
     }
 
     @Test
@@ -40,7 +40,7 @@ public class BowlingScoringTest {
         BowlingScoring bowlingScoring = new BowlingScoring("5/|5/|5/|5/|5/|5/|5/|5/|5/|X||51");
 
         Assert.assertEquals(10, bowlingScoring.getBowlingFrames().size());
-        Assert.assertNotNull(bowlingScoring.getBonusBalls());
+        Assert.assertNotNull(bowlingScoring.getBonusFrame());
     }
 
     @Test

@@ -9,14 +9,14 @@ import java.util.stream.Collectors;
 public class BowlingScoring {
     
     private List<BowlingFrame> bowlingFrames;
-    private BonusBalls bonusBalls;
+    private BowlingFrame bonusFrame;
 
     public BowlingScoring(String scoreString) {
         String[] bowlingScoresArray = scoreString.split("\\|\\|");
         List<String> frameScores = Arrays.asList(bowlingScoresArray[0].split("\\|"));
         boolean withExtraTry = bowlingScoresArray.length == 2;
         if (withExtraTry) {
-            bonusBalls = new BonusBalls(bowlingScoresArray[1]);
+            bonusFrame = new BowlingFrame(bowlingScoresArray[1]);
         }
         bowlingFrames = frameScores.stream().map(BowlingFrame::new).collect(Collectors.toList());
     }
@@ -38,8 +38,8 @@ public class BowlingScoring {
 
     private List<Ball> getAllBalls() {
         List<Ball> allBalls = new ArrayList<>(getTenFrameBalls());
-        if (bonusBalls != null) {
-            allBalls.addAll(bonusBalls.getBalls());
+        if (bonusFrame != null) {
+            allBalls.addAll(bonusFrame.getBalls());
         }
         return allBalls;
     }
@@ -52,8 +52,8 @@ public class BowlingScoring {
         return bowlingFrames;
     }
     
-    public BonusBalls getBonusBalls() {
-        return bonusBalls;
+    public BowlingFrame getBonusFrame() {
+        return bonusFrame;
     }
 
 }

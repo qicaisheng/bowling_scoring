@@ -23,7 +23,6 @@ public class BallsFactory {
 
         if (frameScoreArray.length == 2) {
             if (frameScoreArray[1].equals("X")) {
-                secondHitBottles = 10;
                 balls.add(new StrikeBall());
             }
             if (frameScoreArray[1].equals("/")) {

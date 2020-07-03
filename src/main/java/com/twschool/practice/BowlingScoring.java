@@ -7,9 +7,14 @@ import java.util.stream.Collectors;
 public class BowlingScoring {
     
     private List<BowlingFrame> bowlingFrames;
+    private int extraFirstTryHitBottles;
 
     public BowlingScoring(String scoreString) {
-        List<String> frameScores = Arrays.asList(scoreString.split("\\|"));
+        String[] bowlingScoresArray = scoreString.split("\\|\\|");
+        List<String> frameScores = Arrays.asList(bowlingScoresArray[0].split("\\|"));
+        if (bowlingScoresArray.length == 2) {
+            extraFirstTryHitBottles = Integer.parseInt(bowlingScoresArray[1]);
+        }
         bowlingFrames = frameScores.stream().map(BowlingFrame::new).collect(Collectors.toList());
     }
 
@@ -17,4 +22,15 @@ public class BowlingScoring {
         return bowlingFrames.stream().mapToInt(BowlingFrame::getFrameHitBottles).sum();
     }
 
+    public List<BowlingFrame> getBowlingFrames() {
+        return bowlingFrames;
+    }
+
+    public int getExtraFirstTryHitBottles() {
+        return extraFirstTryHitBottles;
+    }
+
+    public void setExtraFirstTryHitBottles(int extraFirstTryHitBottles) {
+        this.extraFirstTryHitBottles = extraFirstTryHitBottles;
+    }
 }

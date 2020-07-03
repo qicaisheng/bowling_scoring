@@ -25,4 +25,13 @@ public class BowlingScoringTest {
         Assert.assertEquals(90, score);
     }
 
+    @Test
+    public void should_parse_frames_and_extra_hit_bottles_given_last_try_spare_and_one_extra_try() {
+
+        BowlingScoring bowlingScoring = new BowlingScoring("5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5");
+        
+        Assert.assertEquals(10, bowlingScoring.getBowlingFrames().size());
+        Assert.assertEquals(5, bowlingScoring.getExtraFirstTryHitBottles());
+    }
+
 }

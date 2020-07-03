@@ -21,12 +21,34 @@ public class BowlingScoring {
 
     public int getSumScores() {
         int score = 0;
-        for (int frameIndex = 0; frameIndex < bowlingFrames.size() - 1; frameIndex++) {
+        for (int frameIndex = 0; frameIndex < bowlingFrames.size() - 2; frameIndex++) {
             score += bowlingFrames.get(frameIndex).getFrameHitBottles();
             if (bowlingFrames.get(frameIndex).isSpare()) {
                 score += bowlingFrames.get(frameIndex + 1).getFirstHitBottles();
             }
+            if (bowlingFrames.get(frameIndex).isStrike()) {
+                score += bowlingFrames.get(frameIndex + 1).getFirstHitBottles();
+                if (bowlingFrames.get(frameIndex + 1).isStrike()) {
+                    score += bowlingFrames.get(frameIndex + 2).getFirstHitBottles();
+                } else {
+                    score += bowlingFrames.get(frameIndex + 1).getSecondHitBottles();
+                }
+            }
         }
+        score += bowlingFrames.get(8).getFrameHitBottles();
+        if (bowlingFrames.get(8).isSpare()) {
+            score += bowlingFrames.get(9).getFirstHitBottles();
+        }
+        if (bowlingFrames.get(8).isStrike()) {
+            score += bowlingFrames.get(9).getFirstHitBottles();
+            if (bowlingFrames.get(9).isStrike()) {
+                score += bonusBalls.getFirstHitBottles();
+            } else {
+                score += bowlingFrames.get(9).getSecondHitBottles();
+            }
+        }
+        
+        
         score += bowlingFrames.get(9).getFrameHitBottles();
         if (bowlingFrames.get(9).isSpare()) {
             score += bonusBalls.getFirstHitBottles();

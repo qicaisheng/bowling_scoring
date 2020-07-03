@@ -17,6 +17,17 @@ public class BowlingFrameTest {
     }
 
     @Test
+    public void should_parse_bowling_frame_give_frame_score_missed_and_9() {
+        BowlingFrame bowlingFrame = new BowlingFrame("-9");
+
+        Assert.assertNotNull(bowlingFrame);
+
+        Assert.assertEquals(2, bowlingFrame.getBalls().size());
+        Assert.assertEquals(0, bowlingFrame.getBalls().get(0).getHitBattles());
+        Assert.assertEquals(9, bowlingFrame.getBalls().get(1).getHitBattles());
+    }
+
+    @Test
     public void should_parse_bowling_frame_give_frame_score_8_and_1() {
         BowlingFrame bowlingFrame = new BowlingFrame("81");
 

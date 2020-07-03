@@ -7,19 +7,14 @@ import java.util.stream.Collectors;
 public class BowlingScoring {
     
     private List<BowlingFrame> bowlingFrames;
-    private int extraFirstTryHitBottles;
-    private int extraSecondTryHitBottles;
+    private BonusBalls bonusBalls;
 
     public BowlingScoring(String scoreString) {
         String[] bowlingScoresArray = scoreString.split("\\|\\|");
         List<String> frameScores = Arrays.asList(bowlingScoresArray[0].split("\\|"));
         boolean withExtraTry = bowlingScoresArray.length == 2;
         if (withExtraTry) {
-            String extraScoreString = bowlingScoresArray[1];
-            String[] extraScoreStringArray = extraScoreString.split("");
-            extraFirstTryHitBottles = Integer.parseInt(extraScoreStringArray[0]);
-            boolean withExtraTwoTry = extraScoreStringArray.length == 2;
-            extraSecondTryHitBottles = withExtraTwoTry ? Integer.parseInt(extraScoreStringArray[1]) : 0;
+            bonusBalls = new BonusBalls(bowlingScoresArray[1]);
         }
         bowlingFrames = frameScores.stream().map(BowlingFrame::new).collect(Collectors.toList());
     }
@@ -31,20 +26,9 @@ public class BowlingScoring {
     public List<BowlingFrame> getBowlingFrames() {
         return bowlingFrames;
     }
-
-    public int getExtraFirstTryHitBottles() {
-        return extraFirstTryHitBottles;
+    
+    public BonusBalls getBonusBalls() {
+        return bonusBalls;
     }
 
-    public void setExtraFirstTryHitBottles(int extraFirstTryHitBottles) {
-        this.extraFirstTryHitBottles = extraFirstTryHitBottles;
-    }
-
-    public int getExtraSecondTryHitBottles() {
-        return extraSecondTryHitBottles;
-    }
-
-    public void setExtraSecondTryHitBottles(int extraSecondTryHitBottles) {
-        this.extraSecondTryHitBottles = extraSecondTryHitBottles;
-    }
 }

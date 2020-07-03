@@ -13,11 +13,13 @@ public class BowlingScoring {
     public BowlingScoring(String scoreString) {
         String[] bowlingScoresArray = scoreString.split("\\|\\|");
         List<String> frameScores = Arrays.asList(bowlingScoresArray[0].split("\\|"));
-        if (bowlingScoresArray.length == 2) {
+        boolean withExtraTry = bowlingScoresArray.length == 2;
+        if (withExtraTry) {
             String extraScoreString = bowlingScoresArray[1];
             String[] extraScoreStringArray = extraScoreString.split("");
             extraFirstTryHitBottles = Integer.parseInt(extraScoreStringArray[0]);
-            extraSecondTryHitBottles = extraScoreStringArray.length == 2 ? Integer.parseInt(extraScoreStringArray[1]) : 0;
+            boolean withExtraTwoTry = extraScoreStringArray.length == 2;
+            extraSecondTryHitBottles = withExtraTwoTry ? Integer.parseInt(extraScoreStringArray[1]) : 0;
         }
         bowlingFrames = frameScores.stream().map(BowlingFrame::new).collect(Collectors.toList());
     }

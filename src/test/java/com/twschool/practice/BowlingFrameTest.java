@@ -30,4 +30,13 @@ public class BowlingFrameTest {
         Assert.assertTrue(bowlingFrame.isSpare());
     }
 
+    @Test
+    public void should_parse_bowling_frame_give_frame_score_strike() {
+        BowlingFrame bowlingFrame = new BowlingFrame("X");
+
+        Assert.assertNotNull(bowlingFrame);
+        Assert.assertEquals(10, bowlingFrame.getFrameHitBottles());
+        Assert.assertTrue(bowlingFrame.isStrike());
+    }
+
 }

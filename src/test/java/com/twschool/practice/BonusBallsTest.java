@@ -11,6 +11,9 @@ public class BonusBallsTest {
 
         Assert.assertNotNull(bonusBalls);
         Assert.assertEquals(5, bonusBalls.getFirstHitBottles());
+        
+        Assert.assertEquals(1, bonusBalls.getBalls().size());
+        Assert.assertEquals(5, bonusBalls.getBalls().get(0).getHitBattles());
     }
 
     @Test
@@ -20,6 +23,10 @@ public class BonusBallsTest {
         Assert.assertNotNull(bonusBalls);
         Assert.assertEquals(5, bonusBalls.getFirstHitBottles());
         Assert.assertEquals(1, bonusBalls.getSecondHitBottles());
+
+        Assert.assertEquals(2, bonusBalls.getBalls().size());
+        Assert.assertEquals(5, bonusBalls.getBalls().get(0).getHitBattles());
+        Assert.assertEquals(1, bonusBalls.getBalls().get(1).getHitBattles());
     }
 
     @Test
@@ -29,6 +36,10 @@ public class BonusBallsTest {
         Assert.assertNotNull(bonusBalls);
         Assert.assertEquals(10, bonusBalls.getFirstHitBottles());
         Assert.assertEquals(10, bonusBalls.getSecondHitBottles());
+
+        Assert.assertEquals(2, bonusBalls.getBalls().size());
+        Assert.assertEquals(10, bonusBalls.getBalls().get(0).getHitBattles());
+        Assert.assertEquals(10, bonusBalls.getBalls().get(1).getHitBattles());
     }
 
     @Test
@@ -38,5 +49,10 @@ public class BonusBallsTest {
         Assert.assertNotNull(bonusBalls);
         Assert.assertEquals(8, bonusBalls.getFirstHitBottles());
         Assert.assertEquals(2, bonusBalls.getSecondHitBottles());
+
+        Assert.assertEquals(2, bonusBalls.getBalls().size());
+        Assert.assertEquals(8, bonusBalls.getBalls().get(0).getHitBattles());
+        Assert.assertEquals(2, bonusBalls.getBalls().get(1).getHitBattles());
+
     }
 }

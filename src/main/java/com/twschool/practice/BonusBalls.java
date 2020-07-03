@@ -1,13 +1,18 @@
 package com.twschool.practice;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BonusBalls {
     private int firstHitBottles;
     private int secondHitBottles;
+    private List<Ball> balls = new ArrayList<>();
 
     public BonusBalls(String bonusScoreString) {
         String[] extraScoreStringArray = bonusScoreString.split("");
         String firstTryScoreString = extraScoreStringArray[0];
         firstHitBottles = firstTryScoreString.equals("X") ? 10 : Integer.parseInt(firstTryScoreString);
+        balls.add(new NormalBall(firstHitBottles));
         boolean withExtraTwoTry = extraScoreStringArray.length == 2;
         if (withExtraTwoTry) {
             String secondTryScoreString = extraScoreStringArray[1];
@@ -20,6 +25,7 @@ public class BonusBalls {
             if (secondTryScoreString.matches("\\d")) {
                 secondHitBottles = Integer.parseInt(secondTryScoreString);
             }
+            balls.add(new NormalBall(secondHitBottles));
         }
 
     }
@@ -32,4 +38,11 @@ public class BonusBalls {
         return secondHitBottles;
     }
 
+    public List<Ball> getBalls() {
+        return balls;
+    }
+
+    public void setBalls(List<Ball> balls) {
+        this.balls = balls;
+    }
 }

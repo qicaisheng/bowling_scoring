@@ -44,7 +44,7 @@ Total score == 167
 
 - 参考https://ronjeffries.com/xprog/articles/acsbowling/ 里的设计不一定是好的设计
     - Frame 依赖于前后多次的throws。
-    - 主要是过度设计，这是一个积分规则的代码实现，这些规则是非常固定的，这么设计没有太多体现设计的优势
+    - 主要是过度设计，这是一个计分规则的代码实现，这些规则是非常固定的，这么设计没有太多体现设计的优势
 
 ## 来源
 - https://codingdojo.org/kata/Bowling/

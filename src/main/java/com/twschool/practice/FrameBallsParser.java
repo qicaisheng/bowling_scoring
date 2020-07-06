@@ -3,9 +3,9 @@ package com.twschool.practice;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BallsFactory {
+public class FrameBallsParser {
 
-    public static List<Ball> buildBalls(String frameScoreString) {
+    public static List<Ball> parse(String frameScoreString) {
         int firstHitBottles;
         int secondHitBottles;
         List<Ball> balls = new ArrayList<>();

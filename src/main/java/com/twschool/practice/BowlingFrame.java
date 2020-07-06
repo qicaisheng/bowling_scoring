@@ -2,13 +2,13 @@ package com.twschool.practice;
 
 import java.util.List;
 
-import static com.twschool.practice.BallsFactory.buildBalls;
+import static com.twschool.practice.FrameBallsParser.parse;
 
 public class BowlingFrame {
     private List<Ball> balls;
     
     public BowlingFrame(String frameScoreString) {
-        balls = buildBalls(frameScoreString);
+        balls = parse(frameScoreString);
     }
 
 

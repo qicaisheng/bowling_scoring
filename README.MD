@@ -34,3 +34,8 @@ X 表示一个strike / 表示一个spare
 
 X|7/|9-|X|-8|8/|-6|X|X|X||81 
 Total score == 167
+
+## 来源
+- https://codingdojo.org/kata/Bowling/
+- https://ronjeffries.com/xprog/articles/acsbowling/
+    - 是否有必要这么处理，待讨论

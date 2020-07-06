@@ -10,6 +10,7 @@ public class FrameBallsParser {
         List<Ball> balls = new ArrayList<>();
         String[] frameScoreArray = frameScoreString.split("");
         Ball firstBall;
+        Ball secondBall;
         String firstBallScoreString = frameScoreArray[0];
         firstBall = parseFirstBall(firstBallScoreString);
 
@@ -17,23 +18,29 @@ public class FrameBallsParser {
         balls.add(firstBall);
 
         if (frameScoreArray.length == 2) {
-            if (frameScoreArray[1].equals("X")) {
-                balls.add(new StrikeBall());
-            }
-            if (frameScoreArray[1].equals("/")) {
-                secondHitBottles = 10 - firstHitBottles;
-                balls.add(new SpareBall(secondHitBottles));
-            }
-            if (frameScoreArray[1].matches("\\d")) {
-                secondHitBottles = Integer.parseInt(frameScoreArray[1]);
-                balls.add(new NormalBall(secondHitBottles));
-            }
-            if (frameScoreArray[1].equals("-")) {
-                balls.add(new NormalBall(0));
-            }
+            String secondBallScoreString = frameScoreArray[1];
+            secondBall = parseSecondBall(firstHitBottles, secondBallScoreString);
+            balls.add(secondBall);
         }
 
         return balls;
+    }
+
+    private static Ball parseSecondBall(int firstHitBottles, String secondBallScoreString) {
+        Ball secondBall;
+        int secondHitBottles;
+        if (secondBallScoreString.equals("X")) {
+            secondBall = new StrikeBall();
+        } else if (secondBallScoreString.equals("/")) {
+            secondHitBottles = 10 - firstHitBottles;
+            secondBall = new SpareBall(secondHitBottles);
+        } else if (secondBallScoreString.equals("-")) {
+            secondBall = new NormalBall(0);
+        } else {
+            secondHitBottles = Integer.parseInt(secondBallScoreString);
+            secondBall = new NormalBall(secondHitBottles);
+        }
+        return secondBall;
     }
 
     private static Ball parseFirstBall(String firstBallScoreString) {

@@ -27,13 +27,11 @@ public class BowlingScoring {
         for (int ballIndex = 0; ballIndex < getTenFrameBalls().size(); ballIndex++) {
             Ball currentBall = allBalls.get(ballIndex);
             score += currentBall.getHitBattles();
-            Ball nextBall = allBalls.get(ballIndex + 1);
             if (currentBall instanceof StrikeBall) {
-                Ball secondNextBall = allBalls.get(ballIndex + 2);
-                score += nextBall.getHitBattles() + secondNextBall.getHitBattles();
+                score += allBalls.get(ballIndex + 1).getHitBattles() + allBalls.get(ballIndex + 2).getHitBattles();
             }
             if (currentBall instanceof SpareBall) {
-                score += nextBall.getHitBattles();
+                score += allBalls.get(ballIndex + 1).getHitBattles();
             }
         }
         return score;

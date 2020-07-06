@@ -6,20 +6,17 @@ import java.util.List;
 public class FrameBallsParser {
 
     public static List<Ball> parse(String frameScoreString) {
-        int secondHitBottles;
         List<Ball> balls = new ArrayList<>();
         String[] frameScoreArray = frameScoreString.split("");
-        Ball firstBall;
-        Ball secondBall;
         String firstBallScoreString = frameScoreArray[0];
-        firstBall = parseFirstBall(firstBallScoreString);
+        Ball firstBall = parseFirstBall(firstBallScoreString);
 
         int firstHitBottles = firstBall.getHitBattles();
         balls.add(firstBall);
 
         if (frameScoreArray.length == 2) {
             String secondBallScoreString = frameScoreArray[1];
-            secondBall = parseSecondBall(firstHitBottles, secondBallScoreString);
+            Ball secondBall = parseSecondBall(firstHitBottles, secondBallScoreString);
             balls.add(secondBall);
         }
 

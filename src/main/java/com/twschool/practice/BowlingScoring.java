@@ -25,12 +25,15 @@ public class BowlingScoring {
         int score = 0;
         List<Ball> allBalls = getAllBalls();
         for (int ballIndex = 0; ballIndex < getTenFrameBalls().size(); ballIndex++) {
-            score += allBalls.get(ballIndex).getHitBattles();
-            if (allBalls.get(ballIndex) instanceof StrikeBall) {
-                score += allBalls.get(ballIndex + 1).getHitBattles() + allBalls.get(ballIndex + 2).getHitBattles();
+            Ball currentBall = allBalls.get(ballIndex);
+            score += currentBall.getHitBattles();
+            Ball nextBall = allBalls.get(ballIndex + 1);
+            if (currentBall instanceof StrikeBall) {
+                Ball secondNextBall = allBalls.get(ballIndex + 2);
+                score += nextBall.getHitBattles() + secondNextBall.getHitBattles();
             }
-            if (allBalls.get(ballIndex) instanceof SpareBall) {
-                score += allBalls.get(ballIndex + 1).getHitBattles();
+            if (currentBall instanceof SpareBall) {
+                score += nextBall.getHitBattles();
             }
         }
         return score;

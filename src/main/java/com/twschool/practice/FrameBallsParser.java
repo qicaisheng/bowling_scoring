@@ -11,13 +11,7 @@ public class FrameBallsParser {
         String[] frameScoreArray = frameScoreString.split("");
         Ball firstBall;
         String firstBallScoreString = frameScoreArray[0];
-        if (firstBallScoreString.equals("X")) {
-            firstBall = new StrikeBall();
-        } else if (firstBallScoreString.equals("-")) {
-            firstBall = new NormalBall(0);
-        } else {
-            firstBall = new NormalBall(Integer.parseInt(firstBallScoreString));
-        }
+        firstBall = parseFirstBall(firstBallScoreString);
 
         int firstHitBottles = firstBall.getHitBattles();
         balls.add(firstBall);
@@ -40,6 +34,18 @@ public class FrameBallsParser {
         }
 
         return balls;
+    }
+
+    private static Ball parseFirstBall(String firstBallScoreString) {
+        Ball firstBall;
+        if (firstBallScoreString.equals("X")) {
+            firstBall = new StrikeBall();
+        } else if (firstBallScoreString.equals("-")) {
+            firstBall = new NormalBall(0);
+        } else {
+            firstBall = new NormalBall(Integer.parseInt(firstBallScoreString));
+        }
+        return firstBall;
     }
 
 }

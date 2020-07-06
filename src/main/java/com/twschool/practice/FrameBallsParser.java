@@ -24,32 +24,28 @@ public class FrameBallsParser {
     }
 
     private static Ball parseSecondBall(int firstHitBottles, String secondBallScoreString) {
-        Ball secondBall;
         int secondHitBottles;
         if (secondBallScoreString.equals("X")) {
-            secondBall = new StrikeBall();
+            return new StrikeBall();
         } else if (secondBallScoreString.equals("/")) {
             secondHitBottles = 10 - firstHitBottles;
-            secondBall = new SpareBall(secondHitBottles);
+            return new SpareBall(secondHitBottles);
         } else if (secondBallScoreString.equals("-")) {
-            secondBall = new NormalBall(0);
+            return new NormalBall(0);
         } else {
             secondHitBottles = Integer.parseInt(secondBallScoreString);
-            secondBall = new NormalBall(secondHitBottles);
+            return new NormalBall(secondHitBottles);
         }
-        return secondBall;
     }
 
     private static Ball parseFirstBall(String firstBallScoreString) {
-        Ball firstBall;
         if (firstBallScoreString.equals("X")) {
-            firstBall = new StrikeBall();
+            return new StrikeBall();
         } else if (firstBallScoreString.equals("-")) {
-            firstBall = new NormalBall(0);
+            return new NormalBall(0);
         } else {
-            firstBall = new NormalBall(Integer.parseInt(firstBallScoreString));
+            return new NormalBall(Integer.parseInt(firstBallScoreString));
         }
-        return firstBall;
     }
 
 }

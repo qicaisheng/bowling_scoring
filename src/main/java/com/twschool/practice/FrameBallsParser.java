@@ -5,7 +5,7 @@ import java.util.List;
 
 public class FrameBallsParser {
 
-    public static List<Ball> parse(String frameScoreString) {
+    public static BowlingFrame parse(String frameScoreString) {
         List<Ball> balls = new ArrayList<>();
         String[] frameScoreArray = frameScoreString.split("");
         String firstBallScoreString = frameScoreArray[0];
@@ -21,7 +21,7 @@ public class FrameBallsParser {
             balls.add(secondBall);
         }
 
-        return balls;
+        return new BowlingFrame(balls);
     }
 
     private static Ball parseSecondBall(int firstHitBottles, String secondBallScoreString) {

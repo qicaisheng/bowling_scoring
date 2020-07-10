@@ -8,7 +8,11 @@ public class BowlingFrame {
     private List<Ball> balls;
     
     public BowlingFrame(String frameScoreString) {
-        balls = parse(frameScoreString);
+        balls = parse(frameScoreString).balls;
+    }
+
+    public BowlingFrame(List<Ball> balls) {
+        this.balls = balls;
     }
 
 

@@ -14,7 +14,8 @@ public class FrameBallsParser {
         int firstHitBottles = firstBall.getHitBattles();
         balls.add(firstBall);
 
-        if (frameScoreArray.length == 2) {
+        boolean containSecondBall = frameScoreArray.length == 2;
+        if (containSecondBall) {
             String secondBallScoreString = frameScoreArray[1];
             Ball secondBall = parseSecondBall(firstHitBottles, secondBallScoreString);
             balls.add(secondBall);

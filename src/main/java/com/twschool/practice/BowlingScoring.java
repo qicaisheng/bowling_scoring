@@ -10,15 +10,19 @@ public class BowlingScoring {
     
     private List<BowlingFrame> bowlingFrames;
     private BowlingFrame bonusFrame;
+    private BowlingFrames allBowlingFrames;
 
     public BowlingScoring(String scoreString) {
         String[] bowlingScoresArray = scoreString.split("\\|\\|");
         List<String> frameScores = Arrays.asList(bowlingScoresArray[0].split("\\|"));
+        bowlingFrames = frameScores.stream().map(BowlingFrame::new).collect(Collectors.toList());
+        List<BowlingFrame> newBowlingFrames = frameScores.stream().map(BowlingFrame::new).collect(Collectors.toList());
         boolean withExtraTry = bowlingScoresArray.length == 2;
         if (withExtraTry) {
             bonusFrame = new BowlingFrame(bowlingScoresArray[1]);
+            newBowlingFrames.add(bonusFrame);
         }
-        bowlingFrames = frameScores.stream().map(BowlingFrame::new).collect(Collectors.toList());
+        allBowlingFrames = new BowlingFrames(newBowlingFrames);
     }
 
     public int getSumScores() {

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BowlingFrames {
+    public static final int BOWLING_NORMAL_FRAME_SIZE = 10;
     private final List<BowlingFrame> bowlingFrames;
 
     public BowlingFrames(List<BowlingFrame> bowlingFrames) {
@@ -27,11 +28,11 @@ public class BowlingFrames {
     }
 
     public List<BowlingFrame> getTenBowlingFrames() {
-        return getBowlingFrames().stream().limit(10).collect(Collectors.toList());
+        return getBowlingFrames().stream().limit(BOWLING_NORMAL_FRAME_SIZE).collect(Collectors.toList());
     }
 
     public BowlingFrame getBonusFrame() {
-        return getBowlingFrames().get(10);
+        return getBowlingFrames().get(BOWLING_NORMAL_FRAME_SIZE);
     }
 
     public int getSumScores() {

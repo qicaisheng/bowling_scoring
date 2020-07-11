@@ -41,7 +41,7 @@ public class BowlingScoring {
     }
 
     private List<Ball> getTenFrameBalls() {
-        return bowlingFrames.stream().map(BowlingFrame::getBalls).flatMap(Collection::stream).collect(Collectors.toList());
+        return allBowlingFrames.getBowlingFrames().stream().limit(10).map(BowlingFrame::getBalls).flatMap(Collection::stream).collect(Collectors.toList());
     }
 
     public List<BowlingFrame> getBowlingFrames() {

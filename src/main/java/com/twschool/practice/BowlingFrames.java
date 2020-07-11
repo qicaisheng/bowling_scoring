@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BowlingFrames {
-    private List<BowlingFrame> bowlingFrames;
+    private final List<BowlingFrame> bowlingFrames;
 
     public BowlingFrames(List<BowlingFrame> bowlingFrames) {
         this.bowlingFrames = bowlingFrames;

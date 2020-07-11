@@ -11,10 +11,10 @@ public class BowlingScoring {
     public BowlingScoring(String scoreString) {
         String[] bowlingScoresArray = scoreString.split("\\|\\|");
         List<String> frameScores = Arrays.asList(bowlingScoresArray[0].split("\\|"));
-        List<BowlingFrame> bowlingFrames = frameScores.stream().map(BowlingFrame::new).collect(Collectors.toList());
+        List<BowlingFrame> bowlingFrames = frameScores.stream().map(FrameBallsParser::parse).collect(Collectors.toList());
         boolean withExtraTry = bowlingScoresArray.length == 2;
         if (withExtraTry) {
-            BowlingFrame bonusFrame = new BowlingFrame(bowlingScoresArray[1]);
+            BowlingFrame bonusFrame = FrameBallsParser.parse(bowlingScoresArray[1]);
             bowlingFrames.add(bonusFrame);
         }
         allBowlingFrames = new BowlingFrames(bowlingFrames);

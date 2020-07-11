@@ -1,6 +1,8 @@
 package com.twschool.practice;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BowlingFrames {
     private List<BowlingFrame> bowlingFrames;
@@ -11,5 +13,12 @@ public class BowlingFrames {
 
     public List<BowlingFrame> getBowlingFrames() {
         return bowlingFrames;
+    }
+
+    public List<Ball> getAllBalls(BowlingScoring bowlingScoring) {
+        return getBowlingFrames().stream()
+                .map(BowlingFrame::getBalls)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
     }
 }

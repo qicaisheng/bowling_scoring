@@ -26,7 +26,7 @@ public class BowlingScoring {
 
     public int getSumScores() {
         int score = 0;
-        List<Ball> allBalls = getAllBalls();
+        List<Ball> allBalls = allBowlingFrames.getAllBalls(this);
         for (int ballIndex = 0; ballIndex < getTenFrameBalls().size(); ballIndex++) {
             Ball currentBall = allBalls.get(ballIndex);
             score += currentBall.getHitBattles();
@@ -38,13 +38,6 @@ public class BowlingScoring {
             }
         }
         return score;
-    }
-
-    private List<Ball> getAllBalls() {
-        return allBowlingFrames.getBowlingFrames().stream()
-                .map(BowlingFrame::getBalls)
-                .flatMap(Collection::stream)
-                .collect(Collectors.toList());
     }
 
     private List<Ball> getTenFrameBalls() {

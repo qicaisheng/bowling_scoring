@@ -40,7 +40,7 @@ public class BowlingScoring {
     }
 
     public List<BowlingFrame> getBowlingFrames() {
-        return bowlingFrames;
+        return allBowlingFrames.getBowlingFrames().stream().limit(10).collect(Collectors.toList());
     }
     
     public BowlingFrame getBonusFrame() {

@@ -29,4 +29,8 @@ public class BowlingFrames {
     public List<BowlingFrame> getTenBowlingFrames() {
         return getBowlingFrames().stream().limit(10).collect(Collectors.toList());
     }
+
+    public BowlingFrame getBonusFrame() {
+        return getBowlingFrames().get(10);
+    }
 }

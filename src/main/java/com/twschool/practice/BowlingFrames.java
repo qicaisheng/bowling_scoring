@@ -17,14 +17,11 @@ public class BowlingFrames {
     }
 
     public List<Ball> getAllBalls() {
-        return getBowlingFrames().stream()
-                .map(BowlingFrame::getBalls)
-                .flatMap(Collection::stream)
-                .collect(Collectors.toList());
+        return getBallsOf(getBowlingFrames());
     }
 
     public List<Ball> getTenFrameBalls() {
-        return getTenBowlingFrames().stream().map(BowlingFrame::getBalls).flatMap(Collection::stream).collect(Collectors.toList());
+        return getBallsOf(getTenBowlingFrames());
     }
 
     public List<BowlingFrame> getTenBowlingFrames() {
@@ -51,4 +48,7 @@ public class BowlingFrames {
         return score;
     }
 
+    private List<Ball> getBallsOf(List<BowlingFrame> frames) {
+        return frames.stream().map(BowlingFrame::getBalls).flatMap(Collection::stream).collect(Collectors.toList());
+    }
 }

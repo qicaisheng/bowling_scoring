@@ -8,7 +8,7 @@ public class BowlingScoring {
     
     private List<BowlingFrame> bowlingFrames;
     private BowlingFrame bonusFrame;
-    private BowlingFrames allBowlingFrames;
+    BowlingFrames allBowlingFrames;
 
     public BowlingScoring(String scoreString) {
         String[] bowlingScoresArray = scoreString.split("\\|\\|");
@@ -39,10 +39,6 @@ public class BowlingScoring {
         return score;
     }
 
-    public List<BowlingFrame> getBowlingFrames() {
-        return allBowlingFrames.getBowlingFrames().stream().limit(10).collect(Collectors.toList());
-    }
-    
     public BowlingFrame getBonusFrame() {
         return bonusFrame;
     }

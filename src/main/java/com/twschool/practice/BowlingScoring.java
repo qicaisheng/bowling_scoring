@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 
 public class BowlingScoring {
 
-    private BowlingFrame bonusFrame;
     BowlingFrames allBowlingFrames;
 
     public BowlingScoring(String scoreString) {
@@ -15,7 +14,7 @@ public class BowlingScoring {
         List<BowlingFrame> newBowlingFrames = frameScores.stream().map(BowlingFrame::new).collect(Collectors.toList());
         boolean withExtraTry = bowlingScoresArray.length == 2;
         if (withExtraTry) {
-            bonusFrame = new BowlingFrame(bowlingScoresArray[1]);
+            BowlingFrame bonusFrame = new BowlingFrame(bowlingScoresArray[1]);
             newBowlingFrames.add(bonusFrame);
         }
         allBowlingFrames = new BowlingFrames(newBowlingFrames);

@@ -38,7 +38,7 @@ public class BowlingScoring {
     }
 
     public BowlingFrame getBonusFrame() {
-        return bonusFrame;
+        return allBowlingFrames.getBowlingFrames().get(10);
     }
 
 }

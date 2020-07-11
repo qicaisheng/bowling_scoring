@@ -1,7 +1,6 @@
 package com.twschool.practice;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,8 +25,8 @@ public class BowlingScoring {
 
     public int getSumScores() {
         int score = 0;
-        List<Ball> allBalls = allBowlingFrames.getAllBalls(this);
-        for (int ballIndex = 0; ballIndex < getTenFrameBalls().size(); ballIndex++) {
+        List<Ball> allBalls = allBowlingFrames.getAllBalls();
+        for (int ballIndex = 0; ballIndex < allBowlingFrames.getTenFrameBalls().size(); ballIndex++) {
             Ball currentBall = allBalls.get(ballIndex);
             score += currentBall.getHitBattles();
             if (currentBall instanceof StrikeBall) {
@@ -38,10 +37,6 @@ public class BowlingScoring {
             }
         }
         return score;
-    }
-
-    private List<Ball> getTenFrameBalls() {
-        return allBowlingFrames.getBowlingFrames().stream().limit(10).map(BowlingFrame::getBalls).flatMap(Collection::stream).collect(Collectors.toList());
     }
 
     public List<BowlingFrame> getBowlingFrames() {

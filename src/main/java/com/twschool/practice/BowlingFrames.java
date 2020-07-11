@@ -15,10 +15,14 @@ public class BowlingFrames {
         return bowlingFrames;
     }
 
-    public List<Ball> getAllBalls(BowlingScoring bowlingScoring) {
+    public List<Ball> getAllBalls() {
         return getBowlingFrames().stream()
                 .map(BowlingFrame::getBalls)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
+    }
+
+    public List<Ball> getTenFrameBalls() {
+        return getBowlingFrames().stream().limit(10).map(BowlingFrame::getBalls).flatMap(Collection::stream).collect(Collectors.toList());
     }
 }

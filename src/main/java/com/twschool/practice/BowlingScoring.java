@@ -9,6 +9,10 @@ public class BowlingScoring {
     BowlingFrames allBowlingFrames;
 
     public BowlingScoring(String scoreString) {
+        allBowlingFrames = parseFrames(scoreString);
+    }
+
+    private BowlingFrames parseFrames(String scoreString) {
         String[] bowlingScoresArray = scoreString.split("\\|\\|");
         List<String> frameScores = Arrays.asList(bowlingScoresArray[0].split("\\|"));
         List<BowlingFrame> bowlingFrames = frameScores.stream().map(FrameBallsParser::parse).collect(Collectors.toList());
@@ -17,7 +21,7 @@ public class BowlingScoring {
             BowlingFrame bonusFrame = FrameBallsParser.parse(bowlingScoresArray[1]);
             bowlingFrames.add(bonusFrame);
         }
-        allBowlingFrames = new BowlingFrames(bowlingFrames);
+        return new BowlingFrames(bowlingFrames);
     }
 
     public int getSumScores() {

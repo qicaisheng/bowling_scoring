@@ -21,19 +21,7 @@ public class BowlingScoring {
     }
 
     public int getSumScores() {
-        int score = 0;
-        List<Ball> allBalls = allBowlingFrames.getAllBalls();
-        for (int ballIndex = 0; ballIndex < allBowlingFrames.getTenFrameBalls().size(); ballIndex++) {
-            Ball currentBall = allBalls.get(ballIndex);
-            score += currentBall.getHitBattles();
-            if (currentBall instanceof StrikeBall) {
-                score += allBalls.get(ballIndex + 1).getHitBattles() + allBalls.get(ballIndex + 2).getHitBattles();
-            }
-            if (currentBall instanceof SpareBall) {
-                score += allBalls.get(ballIndex + 1).getHitBattles();
-            }
-        }
-        return score;
+        return allBowlingFrames.getSumScores();
     }
 
 }

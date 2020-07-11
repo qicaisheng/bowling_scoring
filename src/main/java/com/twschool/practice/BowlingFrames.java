@@ -33,4 +33,21 @@ public class BowlingFrames {
     public BowlingFrame getBonusFrame() {
         return getBowlingFrames().get(10);
     }
+
+    public int getSumScores() {
+        int score = 0;
+        List<Ball> allBalls = this.getAllBalls();
+        for (int ballIndex = 0; ballIndex < this.getTenFrameBalls().size(); ballIndex++) {
+            Ball currentBall = allBalls.get(ballIndex);
+            score += currentBall.getHitBattles();
+            if (currentBall instanceof StrikeBall) {
+                score += allBalls.get(ballIndex + 1).getHitBattles() + allBalls.get(ballIndex + 2).getHitBattles();
+            }
+            if (currentBall instanceof SpareBall) {
+                score += allBalls.get(ballIndex + 1).getHitBattles();
+            }
+        }
+        return score;
+    }
+
 }

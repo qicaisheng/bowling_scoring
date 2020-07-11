@@ -1,6 +1,5 @@
 package com.twschool.practice;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -42,11 +41,10 @@ public class BowlingScoring {
     }
 
     private List<Ball> getAllBalls() {
-        List<Ball> allBalls = new ArrayList<>(getTenFrameBalls());
-        if (bonusFrame != null) {
-            allBalls.addAll(bonusFrame.getBalls());
-        }
-        return allBalls;
+        return allBowlingFrames.getBowlingFrames().stream()
+                .map(BowlingFrame::getBalls)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
     }
 
     private List<Ball> getTenFrameBalls() {

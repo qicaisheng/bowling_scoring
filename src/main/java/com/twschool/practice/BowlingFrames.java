@@ -8,4 +8,8 @@ public class BowlingFrames {
     public BowlingFrames(List<BowlingFrame> bowlingFrames) {
         this.bowlingFrames = bowlingFrames;
     }
+
+    public List<BowlingFrame> getBowlingFrames() {
+        return bowlingFrames;
+    }
 }
